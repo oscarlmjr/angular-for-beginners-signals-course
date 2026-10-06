@@ -8,7 +8,8 @@ export interface Course {
   title: string;
   description: string;
   iconUrl: string;
-  category: CourseCategory;
+  // category: CourseCategory;
+  category: string;
   seqNo: number;
   price: number;
 }
