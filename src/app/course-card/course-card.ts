@@ -15,7 +15,7 @@ export class CourseCard {
   index = input.required<number>();
 
   editStarted = output<string>();
-
+// lkjlvxcjklvkj
   onCardClick() {
     console.log('card clicked:', this.course().title);
   }
