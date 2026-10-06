@@ -10,6 +10,7 @@ import { Course } from '../model/course';
 })
 export class CourseCard {
 
+<<<<<<< Updated upstream
   course = input.required<Course>();
 
   index = input.required<number>();
@@ -28,4 +29,8 @@ export class CourseCard {
     this.editStarted.emit("Hello component outputs world!");
   }
 
+=======
+
+  
+>>>>>>> Stashed changes
 }
