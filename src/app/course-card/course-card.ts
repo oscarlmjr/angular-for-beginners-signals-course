@@ -12,6 +12,10 @@ export class CourseCard {
 
   course = input.required<Course>();
 
+  index = input.required<number>();
+
+  editStarted = output<string>();
+
   onCardClick() {
     console.log('card clicked:', this.course().title);
   }
@@ -20,6 +24,8 @@ export class CourseCard {
     console.log('edit clicked:', event.target);
     // this.course.title += ' v2';
     event.stopPropagation();
+
+    this.editStarted.emit("Hello component outputs world!");
   }
 
 }

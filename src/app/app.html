@@ -1,7 +1,20 @@
 <toolbar />
 
 <main class="app-main" >
-
-  <course-card class="card" [course]="corseData" />
+  <div class="page-container">
+    <div class="courses-grid">
+      @for (course of courses; track course.id) {
+        <course-card 
+          class="card"
+          [course]="course"
+          [index]="$index"
+          (editStarted)="onEditStarted($event)" 
+        />
+      } @empty {
+        <div class="no-courses">No courses found.</div>
+      }    
+    </div>
+    
+  </div>
   
 </main>
