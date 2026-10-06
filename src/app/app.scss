@@ -11,3 +11,9 @@ h1 {
   max-width: 250px;
   margin: 20px auto;
 }
+
+.corses-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+}

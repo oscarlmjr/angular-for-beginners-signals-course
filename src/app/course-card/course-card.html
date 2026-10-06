@@ -1,11 +1,14 @@
+<!-- [style.animation-delay.ms]="index() * 500" -->
 <article 
-  class="course-card" 
-  (click)="onCardClick()">
+    class="course-card" 
+    [class.is-free]="course().price === 0"
+    (click)="onCardClick()"
+>
   <div class="card-image-link">
     <img
-    class="card-image"
-    [src]="course().iconUrl"
-    [alt]="course().title"
+      class="card-image"
+      [src]="course().iconUrl"
+      [alt]="course().title"
     />
     @switch (course().category) {
       @case ('BEGINNER') {
