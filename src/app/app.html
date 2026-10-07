@@ -1,7 +1,14 @@
 <toolbar />
 
 <main class="app-main" >
+
   <div class="page-container">
+
+    <tabs
+      [tabs]="courseTabs"
+      [activeTab]="activeTab"
+      (tabChanged)="onTabChanged($event)" />
+
     <div class="courses-grid">
       @for (course of courses; track course.id) {
         <course-card 
