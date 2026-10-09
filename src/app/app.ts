@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { Toolbar } from './toolbar/toolbar';
 import { Courses } from './courses/courses';
 import { CourseCard } from './course-card/course-card';
@@ -24,10 +24,11 @@ export class App {
     // { label: 'Advanced', value: CourseCategory.ADVANCED },
   ];
 
-  activeTab: CourseCategory = 'beginner';
+  activeTab = signal<CourseCategory>('beginner');
 
   onTabChanged(newTab: CourseCategory) {
-    this.activeTab = newTab;
+    // this.activeTab.update(previus => newTab);
+    this.activeTab.set(newTab);
     console.log(`active tab: ${newTab}`);
   }
 
