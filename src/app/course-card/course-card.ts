@@ -1,6 +1,6 @@
 import { Component, input, output } from '@angular/core';
-import {CurrencyPipe, TitleCasePipe, UpperCasePipe} from '@angular/common';
-import { Course, CourseCategory } from '../model/course';
+import { CurrencyPipe, TitleCasePipe, UpperCasePipe } from '@angular/common';
+import { Course } from '../model/course';
 
 @Component({
   selector: 'course-card',
@@ -10,12 +10,11 @@ import { Course, CourseCategory } from '../model/course';
 })
 export class CourseCard {
 
-  readonly categories = CourseCategory;
-
   course = input.required<Course>();
 
   index = input.required<number>();
 
+  // editStarted = output<string>();
   editStarted = output<Course>();
 
   onCardClick() {
@@ -27,6 +26,7 @@ export class CourseCard {
     // this.course.title += ' v2';
     event.stopPropagation();
 
+    // this.editStarted.emit("Hello component outputs world!");
     this.editStarted.emit(this.course());
   }
 

@@ -6,6 +6,7 @@ import { Course, CourseCategory } from './model/course';
 import { Tabs } from './tabs/tabs';
 import { TabData } from './tabs/tabs.model';
 import { CoursesService } from './services/courses.service';
+import { httpResource } from '@angular/common/http';
 
 @Component({
   selector: 'root',
@@ -22,7 +23,7 @@ export class App {
   courses = computed(() =>
     this.coursesService.allCourses().filter(course => course.category === this.activeTab())
   );
-
+  
   courseTabs: TabData[] = [
     { label: 'Beginner', value: CourseCategory.BEGINNER },
     { label: 'Advanced', value: CourseCategory.ADVANCED },
@@ -36,11 +37,10 @@ export class App {
   async onEditStarted(course: Course) {
     const newTitle = prompt('New course title:', course.title);
 
-    if (!newTitle?.trim()) {
+    if (!newTitle?.trim()){
       return;
     }
 
-    await this.coursesService.saveCourse(course.id, { title: newTitle.trim() });
+    await this.coursesService.saveCourse(course.id, {title: newTitle.trim() });
   }
-
 }

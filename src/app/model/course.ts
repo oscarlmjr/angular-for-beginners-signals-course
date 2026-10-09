@@ -9,6 +9,9 @@ export interface Course {
   description: string;
   iconUrl: string;
   category: CourseCategory;
+  // category: string;
   seqNo: number;
   price: number;
 }
+
+// export type CourseCategory = 'beginner' | 'advanced';

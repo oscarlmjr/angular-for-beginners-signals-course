@@ -1,8 +1,9 @@
-<article
-  class="course-card"
+<article 
+class="course-card" 
   [class.is-free]="course().price === 0"
   [style.animation-delay.ms]="index() * 500"
-  (click)="onCardClick()">
+  (click)="onCardClick()"
+>
   <div class="card-image-link">
     <img
       class="card-image"
@@ -10,10 +11,10 @@
       [alt]="course().title"
     />
     @switch (course().category) {
-      @case (categories.BEGINNER) {
+      @case ('BEGINNER') {
         <span class="card-category beginner">Beginners only</span>
       }
-      @case (categories.ADVANCED) {
+      @case ('ADVANCED') {
         <span class="card-category advanced">Expert-level</span>
       }
       @default {
