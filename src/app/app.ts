@@ -20,12 +20,7 @@ export class App {
 
   activeTab = signal(CourseCategory.BEGINNER);
 
-  // coursesResource = httpResource<Course[]>(() => '/api/courses', {
-  //   defaultValue: [],
-  // });
-
   courses = computed(() =>
-    // this.coursesResource.value().filter(course => course.category === this.activeTab())
     this.coursesService.allCourses().filter(course => course.category === this.activeTab())
   );
   
@@ -36,11 +31,16 @@ export class App {
 
   onTabChanged(newTab: CourseCategory) {
     this.activeTab.set(newTab);
-    // this.activeTab.update(previus => newTab);
     console.log(`active tab: ${newTab}`);
   }
 
-  onEditStarted(message:string) {
-    console.log(`onEditStarded called with message: ${message}`);
+  async onEditStarted(course: Course) {
+    const newTitle = prompt('New course title:', course.title);
+
+    if (!newTitle?.trim()){
+      return;
+    }
+
+    await this.coursesService.saveCourse(course.id, {title: newTitle.trim() });
   }
 }

@@ -14,7 +14,8 @@ export class CourseCard {
 
   index = input.required<number>();
 
-  editStarted = output<string>();
+  // editStarted = output<string>();
+  editStarted = output<Course>();
 
   onCardClick() {
     console.log('card clicked:', this.course().title);
@@ -25,7 +26,8 @@ export class CourseCard {
     // this.course.title += ' v2';
     event.stopPropagation();
 
-    this.editStarted.emit("Hello component outputs world!");
+    // this.editStarted.emit("Hello component outputs world!");
+    this.editStarted.emit(this.course());
   }
 
 }
