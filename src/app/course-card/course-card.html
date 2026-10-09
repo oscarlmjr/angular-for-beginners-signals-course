@@ -26,7 +26,7 @@ class="course-card"
   <div class="card-body">
     <div class="card-title-row">
       <h3 class="card-title">
-        <span class="card-number">{{ index() + 1 }}.</span> {{ course().title }}
+        <span class="card-number">{{ index() + 1 }}.</span> {{ course().title | titlecase }}
       </h3>
 
       <button class="btn-icon edit-btn" title="Edit title"
@@ -39,6 +39,10 @@ class="course-card"
       {{course().description}}
     </p>
 
-    <div class="card-price">Free</div>
+    @if (course().price > 0) {
+      <div class="card-price">{{ course().price | currency }}</div>
+    } @else {
+      <div class="card-price">Free</div>
+    }
   </div>
 </article>
