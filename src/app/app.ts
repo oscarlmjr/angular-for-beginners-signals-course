@@ -1,10 +1,11 @@
-import { Component, computed, signal } from '@angular/core';
+import { Component, computed, inject, signal } from '@angular/core';
 import { Toolbar } from './toolbar/toolbar';
 import { Courses } from './courses/courses';
 import { CourseCard } from './course-card/course-card';
 import { Course, CourseCategory } from './model/course';
 import { Tabs } from './tabs/tabs';
 import { TabData } from './tabs/tabs.model';
+import { CoursesService } from './services/courses.service';
 import { httpResource } from '@angular/common/http';
 
 @Component({
@@ -15,14 +16,17 @@ import { httpResource } from '@angular/common/http';
 })
 export class App {
 
+  protected coursesService = inject(CoursesService);
+
   activeTab = signal(CourseCategory.BEGINNER);
 
-  coursesResource = httpResource<Course[]>(() => '/api/courses', {
-    defaultValue: [],
-  });
+  // coursesResource = httpResource<Course[]>(() => '/api/courses', {
+  //   defaultValue: [],
+  // });
 
   courses = computed(() =>
-    this.coursesResource.value().filter(course => course.category === this.activeTab())
+    // this.coursesResource.value().filter(course => course.category === this.activeTab())
+    this.coursesService.allCourses().filter(course => course.category === this.activeTab())
   );
   
   courseTabs: TabData[] = [
